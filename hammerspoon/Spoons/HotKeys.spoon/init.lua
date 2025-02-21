@@ -1,6 +1,8 @@
 local obj={}
 
 hyper = { "right_command", "right_control", "right_option", "right_shift" }
+--  -- MacOS
+-- ℝ -- Rider IDE
 
 apps_list =
 {
@@ -87,7 +89,7 @@ apps_list =
 -- ┌—————┐____ALT_LAYER____┌—————┬—————┬—————┬—————┬—————┬—————┬—————┬—————┬—————┬————————┐
 -- │  `  │  ¹  │  ²  │  ³  │  $  │  ‰  │  ↑  │     │  ∞  │  ←  │  →  │  —  │  ≠  │       │
 -- ├—————┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬——————┤
--- │  ⇥    │  ·  │  ✓  │  €  │  ®  │  ™  │  ѣ  │  ѵ  │  і  │  ѳ  │  ′  │  [  │  ]  │ Rider│
+-- │  ⇥    │  ·  │  ✓  │  €  │  ®  │  ™  │  ѣ  │  ѵ  │  і  │  ѳ  │  ′  │  [  │  ]  │   ℝ  │
 -- ├———————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┐     │
 -- │        │  ≈  │  §  │  °  │  £  │     │  ₽  │  „  │  “  │  ”  │  ‘  │  ’  │  |  │     │
 -- ├————————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴—————┴—————┤
@@ -97,6 +99,7 @@ apps_list =
 -- └————————┴—————┴——————┴—————————————————————————————┴——————┴—————————┘
 -- ⌫ -  — remove word to the left
 -- tab - switch the app windows with AltTab app
+-- ↩ — ℝ — Fix Suggestion popup
 -- \ — Copilot Suggestion
 -- up — move line up
 -- left - jump a word to the left
@@ -105,47 +108,47 @@ apps_list =
 }},
 { modifier=left_command, chords={
     -- /------__CMD_LAYER___-------------------------------------------------------------------------------\
-    -- │    │  Rider  │  Rider  │  Rider  │ Rider  │   │    │    │ Rider   │    │    │     │   Rider       │
+    -- │    │  ℝ  │  ℝ  │  ℝ  │ ℝ  │   │    │    │ ℝ   │    │    │     │   ℝ       │
     -- │---------------------------------------------------------------------------------------------------+
-    -- │     │    │    │  Rider  │  Rider │     │    │    │    │    │    │ Rider │ Rider │ Rider │
+    -- │     │    │    │  ℝ  │  ℝ │     │    │    │    │    │    │ ℝ │ ℝ │ ℝ │
     -- │---------------------------------------------------------------------------------------------------+
-    -- │       │    │    │  Rider  │  Rider  │ Rider   │    │    │    │    │    │    │      |
+    -- │       │    │    │  ℝ  │  ℝ  │ ℝ   │    │    │    │    │    │    │      |
     -- |---------------------------------------------------------------------------------------------------+
-    -- |        |   |  |  | | Rider |    |    |  |    | Rider |              |
+    -- |        |   |  |  | | ℝ |    |    |  |    | ℝ |              |
     -- |---------------------------------------------------------------------------------------------------+
-    -- |     |       | 🟢🟢🟢 |            Rider                |      |    |       |     |
+    -- |     |       | 🟢🟢🟢 |            ℝ                |      |    |       |     |
     -- \---------------------------------------------------------------------------------------------------/
     -- ` -
-    -- 1 - Rider - focus solution explorer
-    -- 2 - Rider - focus debug window
-    -- 3 - Rider - focus unit tests explorer
-    -- 4 - Rider - focus build window
+    -- 1 - ℝ - focus solution explorer
+    -- 2 - ℝ - focus debug window
+    -- 3 - ℝ - focus unit tests explorer
+    -- 4 - ℝ - focus build window
     -- 5 -
     -- 6 -
     -- 7 -
-    -- 8 - Rider - focus logcat
+    -- 8 - ℝ - focus logcat
     -- 9 -
     -- 0 - app - Reset zoom
     -- - - app - Zoom out
     -- = - app - Zoom in
-    -- ⌫ - Rider - delete line
+    -- ⌫ - ℝ - delete line
     -- q -  - close current app
     -- w -  - close current tab
-    -- e - Rider - recent files dialog
-    -- r - Rider - replace in current file
+    -- e - ℝ - recent files dialog
+    -- r - ℝ - replace in current file
     -- t -  - new tab
     -- y - app - show all history
     -- u -
     -- i -
     -- o -  - open file
     -- p -  - print
-    -- [ - (Rider - navigate back) ; (Finder — navigate back) ; (Browser — navigate back)
-    -- ] - (Rider - navigate forward) ; (Finder — navigate forward) ; (Browser — navigate forward)
+    -- [ - (ℝ - navigate back) ; (Finder — navigate back) ; (Browser — navigate back)
+    -- ] - (ℝ - navigate forward) ; (Finder — navigate forward) ; (Browser — navigate forward)
     -- a -  - select all
     -- s - app - save
-    -- d - Rider - duplicate line
+    -- d - ℝ - duplicate line
     -- f -  - find (in current file)
-    -- g - Rider - git operations popup
+    -- g - ℝ - git operations popup
     -- h -  - hide current app
     -- j -
     -- k -
@@ -156,23 +159,23 @@ apps_list =
     -- x -  - cut text
     -- c -  - copy text
     -- v -  - paste text
-    -- b - Rider - go to declaration
+    -- b - ℝ - go to declaration
     -- n - app - new window
     -- m -  - minimize window
     -- , -  - show settings of current app
     -- . -
-    -- Rider / - comment line
-    -- Rider space - Basic code completion
+    -- ℝ / - comment line
+    -- ℝ space - Basic code completion
 }},
     { modifier=left_control, chords={
         -- /------__CONTROL_LAYER___------------------------------------------------------------------\
-        -- |     |  Rider  |       |      |    |    |    |    |    |    |    |    |     |             |
+        -- |     |  ℝ  |       |      |    |    |    |    |    |    |    |    |     |             |
         -- |------------------------------------------------------------------------------------------+
-        -- | Rider  |  Rider |  Rider  | Rider |  Rider  |   |    |   |    | Rider |    |    |    |   |
+        -- | ℝ  |  ℝ |  ℝ  | ℝ |  ℝ  |   |    |   |    | ℝ |    |    |    |   |
         -- |------------------------------------------------------------------------------------------+
-        -- | Hyper   |  Rider  |  Rider  |  Rider  |  Rider  | Rider  |    |    |    |    |    |   |  |
+        -- | Hyper   |  ℝ  |  ℝ  |  ℝ  |  ℝ  | ℝ  |    |    |    |    |    |   |  |
         -- |------------------------------------------------------------------------------------------+
-        -- | Rider   |      |       |      |       |      |    |    |     |    |    |                 |
+        -- | ℝ   |      |       |      |       |      |    |    |     |    |    |                 |
         -- |------------------------------------------------------------------------------------------+
         -- | 🟢🟢🟢 |       |       |                               |       |      |      |    |
         -- \------------------------------------------------------------------------------------------/
@@ -180,29 +183,29 @@ apps_list =
         -- F5 -  - Move focus to Window's Toolbar
         -- F6 -  - Move focus to Floating Win
         -- tab - app - switch tab forward
-        -- q - Rider - Stop all
-        -- w - Rider - close all notifications
-        -- e - Rider - Find Usages
-        -- r - Rider - Run
-        -- o - Rider - Override
-        -- a - Rider - Git Annotate
-        -- s - Rider - Save with format
-        -- d - Rider - Debug
-        -- f - Rider - Focus Find Window
-        -- g - Rider - Fofus Git Window
+        -- q - ℝ - Stop all
+        -- w - ℝ - close all notifications
+        -- e - ℝ - Find Usages
+        -- r - ℝ - Run
+        -- o - ℝ - Override
+        -- a - ℝ - Git Annotate
+        -- s - ℝ - Save with format
+        -- d - ℝ - Debug
+        -- f - ℝ - Focus Find Window
+        -- g - ℝ - Fofus Git Window
         -- space -  - change language layout
     }},
     { modifier=hyper, chords={
         -- /------__HYPER_LAYER___---------------------------------------------------------------------------------------\
         -- | ESC |  F1  |   F2    |  F3   | F4   | F5   | F6    | F7  | F8   | F9 |  F10   | F11    |  F12  | backspace  |
         -- |-------------------------------------------------------------------------------------------------------------+
-        -- |     | pageup | up | pagedown | Rider | Telegram |  YouTrack | Torrent |  | up | Music | prtrack | nxttrack |  |
+        -- |     | pageup | up | pagedown | ℝ | Telegram |  YouTrack | Torrent |  | up | Music | prtrack | nxttrack |  |
         -- |-------------------------------------------------------------------------------------------------------------+
         -- |       |  r  |  t  |  y  |  u  |  i  |  o  |  p  |  [  |  ]  |  \  |  |  |  |
         -- |-------------------------------------------------------------------------------------------------------------+
         -- | 🟢🟢🟢 | left | down | right | Raycast  | Fork | Finder | Safari  | left | down | right | volume_up |     |
         -- |-------------------------------------------------------------------------------------------------------------+
-        -- |      |  enter  |  home   | end  |  Yandex | iTerm2  | Windsurf | ElMedia  | home | end |  volume_down  |    |
+        -- |      |  ↩  |  home   | end  |  Yandex | iTerm2  | Windsurf | ElMedia  | home | end |  volume_down  |    |
         -- |-------------------------------------------------------------------------------------------------------------+
         -- |     |      |       |         play/stop                |       |       |       |                             |
         -- \-------------------------------------------------------------------------------------------------------------/
@@ -245,7 +248,7 @@ apps_list =
         -- ; - right
         -- ' - volume up
         -- return - Day One
-        -- z - enter
+        -- z - ↩
         -- x - home
         -- c - end
         { key="v", app="Yandex" },
@@ -285,11 +288,11 @@ apps_list =
         -- 0 -
         -- - -
         -- / -
-        -- delete - Rider -go to last edit location
+        -- delete - ℝ -go to last edit location
         -- q -  - quit all applications
         -- w -  - close window
-        -- e - Rider - recent locations popup
-        -- r - Rider - replace in files
+        -- e - ℝ - recent locations popup
+        -- r - ℝ - replace in files
         -- t -  - reopen closed tab
         -- y -
         -- u -
@@ -302,7 +305,7 @@ apps_list =
         -- a -
         -- s -
         -- d -
-        -- f - Rider - search in files
+        -- f - ℝ - search in files
         -- g -
         -- h -
         -- j -
@@ -319,7 +322,7 @@ apps_list =
         -- m -
         -- , -
         -- . -
-        -- / - Rider - comment
+        -- / - ℝ - comment
     }},
     { modifier={"left_command", "alt"}, chords={
         -- /------__CONTROL_LAYER___-------------------------------------------------------------------------\
@@ -327,21 +330,21 @@ apps_list =
         -- |-------------------------------------------------------------------------------------------------+
         -- |      |     |    |  |    |   |    |   |    |    |    |    |    |     |                           |
         -- |-------------------------------------------------------------------------------------------------+
-        -- |        |    |    |    | Rider |   |    |    |    | Finder  |    |    |      |              |
+        -- |        |    |    |    | ℝ |   |    |    |    | Finder  |    |    |      |              |
         -- |-------------------------------------------------------------------------------------------------+
-        -- |          |      |       | Finder | Rider |      | Rider | Rider   |     |    |    |     |       |
+        -- |          |      |       | Finder | ℝ |      | ℝ | ℝ   |     |    |    |     |       |
         -- |-------------------------------------------------------------------------------------------------+
         -- |      | 🟢🟢🟢 | 🟢🟢🟢 |                              |       |     |      |    |       |
         -- \-------------------------------------------------------------------------------------------------/
         -- esc -  - force quit current app
         -- f -  - show/hide Dock
-        -- f - Rider - extract field
+        -- f - ℝ - extract field
         -- h -  - hide all other windows
         -- l — (Finder — downloads) ; (Browser — downloads)
         -- c — Finder — Copy file's path
-        -- v - (Rider - extract variable) ; (Finder — move items here)
-        -- n - Rider - inline
-        -- m - Rider - extract method
+        -- v - (ℝ - extract variable) ; (Finder — move items here)
+        -- n - ℝ - inline
+        -- m - ℝ - extract method
     }},
     { modifier={"left_command", "left_control"}, chords={
         -- /------__CONTROL_LAYER___-----------------------------------------------------------------\
@@ -362,23 +365,23 @@ apps_list =
     }},
     { modifier= {"left_control", "left_shift"}, chords={
         -- /------__CONTROL_LAYER___-----------------------------------------------------------------\
-        -- |     |  Rider  |       |      |    |    |    |    |    |    |    |    |     |            |
+        -- |     |  ℝ  |       |      |    |    |    |    |    |    |    |    |     |            |
         -- |-----------------------------------------------------------------------------------------+
-        -- | Rider  |  Rider |  Rider  | Rider |  Rider  |   |    |   |    |    |    |    |    |     |
+        -- | ℝ  |  ℝ |  ℝ  | ℝ |  ℝ  |   |    |   |    |    |    |    |    |     |
         -- |-----------------------------------------------------------------------------------------+
-        -- |        |  Rider  |  Rider  |  Rider  |  Rider  | Rider  |    |    |   |   |    |    |   |
+        -- |        |  ℝ  |  ℝ  |  ℝ  |  ℝ  | ℝ  |    |    |   |   |    |    |   |
         -- |-----------------------------------------------------------------------------------------+
         -- |  🟢🟢🟢    |      |       |      |       |      |    |    |     |    |    |               |
         -- |-----------------------------------------------------------------------------------------+
         -- |  🟢🟢🟢  |       |       |                               |       |       |       |     |
         -- \-----------------------------------------------------------------------------------------/
         { key="escape", app="Activity Monitor" },
-        -- tab - Rider - go to previous tab
+        -- tab - ℝ - go to previous tab
         -- q -  - log out with dialogs
-        -- r - Rider — Run Unit Tests
+        -- r - ℝ — Run Unit Tests
         -- p - app - open private window
-        -- d - Rider - Debug Unit Tests
-        -- g - Rider - current file git history
+        -- d - ℝ - Debug Unit Tests
+        -- g - ℝ - current file git history
         -- { key="i", map="mouse_right_button" },
         -- { key="o", map="mouse_up" },
         -- { key="p", map="mouse_left_button" },
@@ -394,7 +397,7 @@ apps_list =
         -- |-----------------------------------------------------------------------------------------+
         -- |    |   |      |      |      |     |   |     |    |    |    |    |    |                  |
         -- |-----------------------------------------------------------------------------------------+
-        -- |        |    |  |  Rider  |  Rider  | Rider  | Hammerspoon |    |    |    |    |    |    |
+        -- |        |    |  |  ℝ  |  ℝ  | ℝ  | Hammerspoon |    |    |    |    |    |    |
         -- |-----------------------------------------------------------------------------------------+
         -- |          |      | XCode |      |       |      |    |    |     |    |    |               |
         -- |-----------------------------------------------------------------------------------------+
@@ -404,7 +407,7 @@ apps_list =
         { key="w", specific_function="window.fullscreen"},
         { key="e", specific_function="audio.external"},
         { key="i", specific_function="info.show_shortcuts"},
-        -- Rider | - GitHub Copilot - show suggestion
+        -- ℝ | - GitHub Copilot - show suggestion
         { key="a", specific_function="window.left"},
         { key="s", specific_function="window.set_all_to_default" },
         { key="d", specific_function="window.right" },
