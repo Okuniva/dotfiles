@@ -568,9 +568,9 @@ function obj:init()
                     spoon.PopupTranslateSelection:bindHotkeys({
                         translate_to_en = {row.modifier, chord_row.key},
                     })
-                elseif chord_row.specific_function == "translate_to_greek" then
+                elseif chord_row.specific_function == "translate_to_russian" then
                     spoon.PopupTranslateSelection:bindHotkeys({
-                        translate_to_el = {row.modifier, chord_row.key},
+                        translate_to_ru = {row.modifier, chord_row.key},
                     })
                 elseif chord_row.specific_function == "audio.internal" then
                     hs.hotkey.bind(row.modifier, chord_row.key, function()
