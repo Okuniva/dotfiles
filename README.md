@@ -91,6 +91,9 @@ You will be asked to install command tools - agree.
   * Replace my name and email in [GitConfig](https://github.com/servitola/dotfiles/blob/master/git/gitconfig) with yours.
   * Set screenshot shortcuts to other shortcuts (even if they are turned off) so that [Shottr](https://shottr.cc/) can take them.
 
+* Q: I've installed everything, but my <ins>keyboard shortcuts</ins> and <ins>layouts</ins> don't work
+* A: Make sure to run [Karabiner Elements](https://karabiner-elements.pqrs.org/) after installation. It needs to be running for the keyboard configurations to take effect. The keyboard layouts and shortcuts defined in the dotfiles depend on Karabiner Elements being active.
+
 * Q: I want to understand what this repository installs exactly
 * A: Check the [Makefile](https://github.com/servitola/dotfiles/blob/master/Makefile) script. It installs all the programs (mostly with homebrew), creates symlinks, and completes the setup.
 
