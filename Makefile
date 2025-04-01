@@ -33,6 +33,10 @@ install:
 	@ln -sfvh ~/projects/dotfiles/hammerspoon ~/.hammerspoon
 	@open /Applications/Hammerspoon.app
 
+	@echo "setup AyuGram advanced settings"
+	@mkdir -p ~/projects/dotfiles/ayugram
+	@$(SHELL) -c 'source ~/projects/dotfiles/ayugram/configure.sh'
+
 	@echo "setup midnight commander symlink"
 	@rm -rf ~/.config/mc
 	@ln -sfvh ~/projects/dotfiles/midnight\ commander ~/.config/mc
