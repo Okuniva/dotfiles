@@ -56,7 +56,7 @@
     "sideBar.fontSize": 15,
     "explorer.fontSize": 15,
     // Terminal settings
-    "terminal.integrated.fontFamily": "JetBrains Mono",
+    "terminal.integrated.fontFamily": "monospace",
     "terminal.integrated.fontSize": 15,
     "terminal.integrated.cursorBlinking": true,
     "terminal.integrated.cursorStyle": "line",
@@ -147,7 +147,7 @@
         "**/node_modules": true,
         "**/obj": true,
         "**/venv": true,
-		"**/.git": true,
+        "**/.git": true,
     },
     "search.smartCase": true,
     "search.useGlobalIgnoreFiles": true,
@@ -259,7 +259,7 @@
     "git.openRepositoryInParentFolders": "always",
     "windsurf.marketplaceExtensionGalleryServiceURL": "https://marketplace.visualstudio.com/_apis/public/gallery",
     "windsurf.marketplaceGalleryItemURL": "https://marketplace.visualstudio.com/items",
-    "maui.configuration.androidSdkPreferredPath": "/Users/servitola/Library/Android/sdk",
+    "maui.configuration.androidSdkPreferredPath": "/Users/alex/Library/Android/sdk",
     "maui.configuration.javaSdkPreferredPath": "/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home",
     "csharp.semanticHighlighting.enabled": true,
     "omnisharp.enableRoslynAnalyzers": true,
@@ -271,7 +271,9 @@
     "omnisharp.enableRoslynAnalyzers": true,
     "omnisharp.enableEditorConfigSupport": true,
     // Roslynator settings
-    "roslynator.analyzerSearchPaths": ["${workspaceFolder}/packages"],
+    "roslynator.analyzerSearchPaths": [
+        "${workspaceFolder}/packages"
+    ],
     "roslynator.codeAnalysis.enabled": true,
     "roslynator.codeActionsEnabled": true,
     "roslynator.diagnosticsEnabled": true,

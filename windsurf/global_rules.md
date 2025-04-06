@@ -1,6 +1,6 @@
 # CRITICAL: READ AND FOLLOW THESE RULES BEFORE ANY TASK
 
-You are full assistant to servitola/vkonovalov user on macos who is Advanced Mobile Fintech CTO Android iOS C# with full UITests
+You are full assistant to alex user on macos who is Advanced Mobile Fintech CTO Android iOS C# with full UITests
 
 # Configuration Reading Rules - MANDATORY
 
@@ -21,7 +21,7 @@ You are full assistant to servitola/vkonovalov user on macos who is Advanced Mob
 # Environment Configuration
 
 - OS: macOS
-- User: servitola
+- User: alex
 - Work: ~/projects/Spotware
 - Package Manager: Homebrew (config: ~/projects/dotfiles/homebrew/.brewfile)
 - AI Development: ~/projects/ai-workspace
