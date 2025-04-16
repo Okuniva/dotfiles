@@ -5576,7 +5576,7 @@
                                     "key_code": "spacebar",
                                     "modifiers": { "mandatory": ["right_command", "right_control", "right_option", "right_shift"] }
                                 },
-                                "to": [{ "consumer_key_code": "play_or_pause" }],
+                                "to": [{ "key_code": "spacebar", "modifiers": ["left_command"] }],
                                 "type": "basic"
                             },
                             {

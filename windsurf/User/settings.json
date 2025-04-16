@@ -291,5 +291,7 @@
     "windsurf.cascadeCommandsDenyList": [
         "git push"
     ],
-    "windsurf.enableModelBasedAutoExecution": true
+    "windsurf.enableModelBasedAutoExecution": true,
+    "windsurf.autocompleteSpeed": "fast",
+    "windsurf.autoExecutionPolicy": "off"
 }

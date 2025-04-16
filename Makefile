@@ -54,6 +54,10 @@ install:
 	@rm -rf ~/Library/Application\ Support/JetBrains/Rider2024.3/rider.vmoptions
 	@ln -sfvh ~/projects/dotfiles/jetbrains\ rider/rider.vmoptions ~/Library/Application\ Support/JetBrains/Rider2024.3/rider.vmoptions
 
+	@echo "setup Rider keymaps symlink"
+	@mkdir -p ~/Library/Application\ Support/JetBrains/Rider2024.3/keymaps
+	@ln -sfvh ~/projects/dotfiles/jetbrains\ rider/keymaps/IntelliJ\ copy.xml ~/Library/Application\ Support/JetBrains/Rider2024.3/keymaps/IntelliJ\ copy.xml
+
 	@echo "setup LINQPad symlinks"
 	@rm -rf ~/LINQPad
 	@ln -sfvh ~/projects/dotfiles/LINQPad ~/LINQPad
