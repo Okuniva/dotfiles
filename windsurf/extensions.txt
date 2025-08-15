@@ -13,12 +13,6 @@ ms-dotnettools.dotnet-interactive-vscode
 ms-dotnettools.vscodeintellicode-csharp
 formulahendry.dotnet-test-explorer
 
-# Mobile Development
-ms-vscode.xaml
-ms-vscode.xamarin-ios
-ms-vscode.xamarin-android
-msjsdiag.vscode-react-native
-
 # Docker & DevOps
 ms-azuretools.vscode-docker
 ms-kubernetes-tools.vscode-kubernetes-tools

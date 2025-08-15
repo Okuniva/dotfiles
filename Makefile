@@ -12,10 +12,6 @@ install:
 	@$(SHELL) -c 'source homebrew/install_minimum_homebrew_packages.sh'
 	@$(SHELL) -c 'source zsh/setup_zsh.sh'
 
-	@echo "setup hosts file (perhaps you need to do it manually later)"
-	@sudo rm -rf /etc/hosts
-	@sudo ln -sfvh ~/projects/dotfiles/macos/hosts /etc/hosts
-
 	@echo "setup git symlinks"
 	@rm -rf ~/.gitconfig
 	@ln -sfvh ~/projects/dotfiles/git/gitconfig ~/.gitconfig
@@ -109,13 +105,6 @@ install:
 	@echo "installing vsce to publish vscode extensions"
 	@npm install --global vsce
 	@npm install --global typescript
-
-	@echo "installing Finder Context Menu"
-	@rm -rf ~/Library/Group\ Containers/85P8ZUTQL8.net.langui.ContextMenu/Actions
-	@ln -sfvh ~/projects/dotfiles/contextmenu/Actions ~/Library/Group\ Containers/85P8ZUTQL8.net.langui.ContextMenu/Actions
-	@mkdir -p ~/Library/Application\ Scripts/net.langui.ContextMenuHelper
-	@echo '#!/bin/sh\npkill -nf ScriptMonitor\nexec "$$@"' > ~/Library/Application\ Scripts/net.langui.ContextMenuHelper/contextmenu.sh
-	@chmod +x ~/Library/Application\ Scripts/net.langui.ContextMenuHelper/contextmenu.sh
 
 	@if [ ! -d "$(HOME)/projects/gruvbox-wallpapers" ]; then \
 		echo "Cloning gruvbox-wallpapers repository..."; \

@@ -293,5 +293,6 @@
     ],
     "windsurf.enableModelBasedAutoExecution": true,
     "windsurf.autocompleteSpeed": "fast",
-    "windsurf.autoExecutionPolicy": "off"
+    "windsurf.autoExecutionPolicy": "off",
+    "testing.automaticallyOpenTestResults": "neverOpen"
 }
