@@ -1,21 +1,22 @@
 local obj = {}
 
-margin = 0.005
-animation_duration = 0.1
-horizontal_line = 0.70
-vertical_line = 0.73
+dofile("./Spoons/Windows.spoon/config.lua")
+dofile("./Spoons/Windows.spoon/window_main_set_function.lua")
+dofile("./Spoons/Windows.spoon/small_dialog_detector.lua")
+dofile("./Spoons/Windows.spoon/get_right_panel_windows.lua")
+dofile("./Spoons/Windows.spoon/window_set_bottom_function.lua")
+dofile("./Spoons/Windows.spoon/window_set_right_function.lua")
+dofile("./Spoons/Windows.spoon/dialog_set_right_function.lua")
+dofile("./Spoons/Windows.spoon/windows_detection_functions.lua")
+dofile("./Spoons/Windows.spoon/windows_watcher.lua")
+dofile("./Spoons/Windows.spoon/adjust_right_panel_for_dialogs.lua")
+dofile("./Spoons/Windows.spoon/window_set_full_size_function.lua")
+dofile("./Spoons/Windows.spoon/restore_right_panel_windows_function.lua")
+dofile("./Spoons/Windows.spoon/window_set_to_default_place_function.lua")
 
------------------------------------------
-
-top_bar_height = 25
-spacing = margin * 2
-leftX = margin
-topY = margin
-rightX = 1 - margin / 1.5
-bottomY = 1 - margin * 1.5
-
-right_side_app_titles = {}
-bottom_side_app_titles = {"IINA"}
+local active_small_dialogs = {}
+local right_panel_windows_adjusted = false
+local right_panel_windows_positions = {}
 
 function obj:add_right_window_type_app(title)
     table.insert(right_side_app_titles, title)
@@ -46,51 +47,99 @@ function obj:set_all_windows_positions()
 end
 
 function set_window_left(window)
-    set_window(leftX, topY, vertical_line - spacing, bottomY - topY, window)
-end
-
-function set_window_right(window)
     if window == nil then
         window = hs.window.frontmostWindow()
     end
 
-    local app_title = window:application():title()
-    local window_title = window:title()
+    if is_ios_simulator(window) then
+        local current = window:frame()
+        local aspect_ratio = current.h / current.w
 
-    if hs.fnutils.contains(bottom_side_app_titles, app_title) then
-        set_window_bottom(window)
-    elseif is_yandex_video_player(app_title, window_title, window) then
-        set_window_bottom(window)
-    elseif is_finder_copy_dialog(app_title, window_title, window) then
-         set_window_bottom(window)
-    else
-        set_window(vertical_line, topY, rightX - vertical_line,
-            horizontal_line - margin, window)
+        local screen = window:screen()
+        local screen_frame = screen:frame()
+
+        local target_width = screen_frame.w * 0.4
+        local target_height = target_width * aspect_ratio
+
+        if target_height > screen_frame.h * 0.7 then
+            target_height = screen_frame.h * 0.7
+            target_width = target_height / aspect_ratio
+        end
+
+        local x = screen_frame.x + margin
+        local y = screen_frame.y + (screen_frame.h - target_height) / 2 - (screen_frame.h * 0.1)
+
+        window:setFrame({
+            x = x,
+            y = y,
+            w = target_width,
+            h = target_height
+        }, animation_duration)
+        return
     end
-end
 
-function set_window_bottom(window)
-    set_window(
-        vertical_line,
-        horizontal_line + spacing,
-        rightX - vertical_line,
-      1 - horizontal_line,
-      window)
-end
-
-function set_window_fullscreen(window)
-    set_window(leftX, topY, rightX - leftX, bottomY - topY, window)
+    set_window(leftX, topY, vertical_line - spacing, bottomY - topY, window)
 end
 
 function set_all_windows_positions()
-    local emulators_number = 0
-    local emulators_positioned = 0
+    print("=== All Windows List ===")
+
+    active_small_dialogs = {}
+    right_panel_windows_adjusted = false
+
+    local android_positioned = false
+    local ios_positioned = false
+
+    for _, window in ipairs(hs.window.allWindows()) do
+        if is_android_emulator(window) then
+            local screen = window:screen()
+            local screen_frame = screen:frame()
+            local frame = window:frame()
+            local expected_x = screen_frame.x + (screen_frame.w * vertical_line)
+            local expected_y = screen_frame.y + (screen_frame.h * topY)
+
+            if math.abs(frame.x - expected_x) <= 1 and math.abs(frame.y - expected_y) <= 1 then
+                print("Found Android Emulator window in correct position - will skip all android windows")
+                android_positioned = true
+            end
+        end
+    end
 
     for _, window in ipairs(hs.window.allWindows()) do
         local window_title = window:title()
         local app_title = window:application():title()
+        print(string.format("Window: '%s', App: '%s'", window_title, app_title))
 
-        if hs.fnutils.contains(right_side_app_titles, app_title) then
+        if is_android_emulator(window) then
+            if not android_positioned then
+                print("Moving Android Emulator window to right side")
+                set_window(vertical_line, topY, rightX - vertical_line, horizontal_line - margin, window)
+            end
+        elseif is_ios_simulator(window) then
+            local current = window:frame()
+            local aspect_ratio = current.h / current.w
+
+            local screen = window:screen()
+            local screen_frame = screen:frame()
+
+            local target_width = screen_frame.w * 0.4
+            local target_height = target_width * aspect_ratio
+
+            if target_height > screen_frame.h * 0.7 then
+                target_height = screen_frame.h * 0.7
+                target_width = target_height / aspect_ratio
+            end
+
+            local x = screen_frame.x + screen_frame.w * vertical_line
+            local y = screen_frame.y + (screen_frame.h * topY)
+
+            window:setFrame({
+                x = x,
+                y = y,
+                w = target_width,
+                h = target_height
+            }, animation_duration)
+        elseif hs.fnutils.contains(right_side_app_titles, app_title) then
             set_window_right(window)
         elseif is_music_mini_player(app_title, window_title) then
             set_window_bottom(window)
@@ -100,8 +149,10 @@ function set_all_windows_positions()
             set_window_bottom(window)
         elseif is_finder_copy_dialog(app_title, window_title, window) then
             set_window_bottom(window)
-        elseif is_android_emulator(window) then
-            emulators_number = emulators_number + 1
+        elseif is_activity_monitor_cpu_window(app_title, window_title) then
+            set_window_right(window)
+        elseif is_activity_monitor_small_window(app_title, window_title, window) then
+            set_window_bottom(window)
         else
             if is_full_screen(window) then
                 if window == hs.window.frontmostWindow() then
@@ -111,100 +162,12 @@ function set_all_windows_positions()
                 set_window_left(window)
             end
         end
-
-        if is_android_emulator(window) then
-            local app = window:application()
-
-            local screen_size = window:screen():fullFrame()
-            local window_frame = window:frame()
-            emulators_positioned = emulators_positioned + 1
-
-            window:setFrame({
-                x = screen_size.w / 2 - window_frame.w / 2,
-                y = screen_size.h / 2 - window_frame.h / 2,
-                h = window_frame.h,
-                w = window_frame.w
-            })
-        end
     end
 end
 
-function is_android_emulator(window)
-    local window_title = window:title()
-    local app_title = window:application():title()
-
-    if app_title == "qemu-system-x86_64" or string.find(window_title, "Android Emulator") then
-        return true
-    else
-        return false
-    end
-end
-
-function is_music_mini_player(app_title, window_title)
-    if app_title == "Music" and window_title == "Mini Player" then
-        return true
-    else
-        return false
-    end
-end
-
-function is_firefox_video_player(app_title, window_title)
-  if app_title == "Firefox" and window_title == "Picture-in-Picture" then
-      return true
-  else
-      return false
-  end
-end
-
-function is_yandex_video_player(app_title, window_title, window)
-    -- Check for Yandex video window - it's the window WITHOUT the suffix
-    if not (app_title == "Yandex" and window_title) then
-        return false
-    end
-
-    local suffix = string.char(226, 128, 148, 32, 89, 97, 110, 100, 101, 120, 194, 160, 66, 114, 111, 119, 115, 101, 114)
-    local title_end = window_title:sub(-#suffix)
-
-    local is_video = title_end ~= suffix
-
-    return is_video
-end
-
-function is_finder_copy_dialog(app_title, window_title, window)
-    if app_title ~= "Finder" then
-        return false
-    end
-    local window_frame = window:frame()
-
-    local is_copy = window_title:match("^Copy") or window_title:match("^Move")
-
-    local is_small_window = window_frame.w < 600 and window_frame.h < 250
-
-    return is_copy and is_small_window
-end
-
-function is_full_screen(window)
-    local window_frame = window:frame()
-    local screen_size = window:screen():fullFrame()
-
-    if math.floor(window_frame.h) == math.floor(screen_size.h * bottomY - screen_size.h * topY - top_bar_height)
-        and math.floor(window_frame.w) == math.floor(screen_size.w * rightX - screen_size.w * leftX) then
-        return true
-    else
-        return false
-    end
-end
-
-function set_window(x, y, width, height, window)
-    if window == nil then
-        window = hs.window.frontmostWindow()
-    end
-
-    if is_android_emulator(window) then
-        return
-    end
-
-    window:moveToUnit({x, y, width, height}, animation_duration)
+function obj:init()
+    setup_window_watcher()
+    return self
 end
 
 return obj

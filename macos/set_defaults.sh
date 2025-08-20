@@ -10,9 +10,6 @@ osascript -e 'tell application "System Preferences" to quit'
 echo "Show the ~/Library folder."
 chflags nohidden ~/Library
 
-echo "Disable the sound effects on boot"
-nvram SystemAudioVolume=" "
-
 echo Disable the crash reporter
 defaults write com.apple.CrashReporter DialogType -string "none"
 
@@ -233,8 +230,36 @@ sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate ConfigDataInst
 sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate CriticalUpdateInstall -bool false
 
 echo "Disable Natural Language services"
-launchctl unload -w /System/Library/LaunchAgents/com.apple.naturallanguaged.plist 2> /dev/null
 defaults write com.apple.assistant.support "Assistant Enabled" -bool false
 defaults write com.apple.Siri VoiceTriggerEnabled -bool false
 defaults write com.apple.speech.recognition.AppleSpeechRecognition.prefs DictationIMIntroMessagePresented -bool true
 defaults write com.apple.speech.recognition.AppleSpeechRecognition.prefs ActiveInputAudioDeviceUID -string ""
+
+echo "Enable Dark Mode"
+# Method 1: Using defaults
+defaults write .GlobalPreferences AppleInterfaceStyle -string "Dark"
+# Method 2: Using AppleScript (more reliable)
+osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to true'
+
+# Enable Dark Mode for Terminal.app too
+defaults write com.apple.Terminal "Default Window Settings" -string "Pro"
+defaults write com.apple.Terminal "Startup Window Settings" -string "Pro"
+
+###############################################################################
+echo "Terminal, Finder and scrolling settings"                                #
+###############################################################################
+
+echo "Terminal settings"
+defaults write com.apple.Terminal "Default Window Settings" -string "Pro"
+defaults write com.apple.Terminal "Startup Window Settings" -string "Pro"
+defaults write com.apple.Terminal "FontAntialias" -int 0
+
+echo "Finder settings"
+defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
+defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
+defaults write com.apple.finder ShowPathbar -bool true
+defaults write com.apple.finder ShowSidebar -bool true
+defaults write com.apple.finder ShowStatusBar -bool true
+
+echo "Scrolling settings (traditional)"
+defaults write -g com.apple.swipescrolldirection -bool false

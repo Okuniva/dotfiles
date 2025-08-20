@@ -11,6 +11,9 @@ source ~/projects/dotfiles/zsh/plugins/zsh-defer/zsh-defer.plugin.zsh
 export HOMEBREW_AUTO_UPDATE_SECS="86400"
 export HOMEBREW_NO_ENV_HINTS=1
 
+# Disable telemetry for Claude Code
+export CLAUDE_CODE_ENABLE_TELEMETRY=0
+
 DISABLE_UPDATE_PROMPT=true
 
 export LANG=en_US.UTF-8
@@ -66,3 +69,6 @@ if [ -f ~/.config/openai_key.sh ]; then
 else
     echo "\033[31mError: OpenAI API key file not found at ~/.config/openai_key\033[0m"
 fi
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+

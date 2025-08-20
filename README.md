@@ -21,7 +21,7 @@ I use this configuration and adjust it on two of my Macs: Mac Studio M1Pro and M
 * A: I use [iTerm2](https://iterm2.com/) and I have the best setup for [ZSH](https://www.wikiwand.com/en/Z_shell) with [oh-my-zsh](https://ohmyz.sh/) and [powerlevel10k](https://github.com/romkatv/powerlevel10k) theme. It is very helpful.
 
 * Q: I want to <ins>update all</ins> my applications at once
-* A: Autoupdate **Everything** with the `up` command. Run `up` from Terminal. It also cleans a lot of cache folders. I have 120 applications and feel no pressure.
+* A: Autoupdate **Everything** with the `up` command. Run `up` from Terminal. It also cleans a lot of cache folders. I have 200+ applications and feel no pressure.
 
 * Q: I want my <ins>work web links</ins> to be opened <ins>in Safari</ins> and the <ins>other stuff</ins> in <ins>another browser</ins>
 * A: Look at `hammerspoon/config_UrlDispatcher.sh`. There are some [RegEx](https://www.wikiwand.com/en/Regular_expression) to identify different types of links. Just set [Hammerspoon](hammerspoon.org/) as your default browser in `System Preferences → General → Default web browser`.
@@ -44,16 +44,13 @@ OBSOLETED IMAGE!!! CHECK THE FILE `hammerspoon/Spoons/Hotkeys.spoon/init.lua`
 * A: I use [LuLu](https://objective-see.org/products/lulu.html)
 
 * Q: I want to <ins>draw lines</ins> on my <ins>screenshots</ins>. I take screenshots for work
-* A: I use [Shottr](https://shottr.cc/). It is installed with all programs using homebrew here.
+* A: I use [Shottr](https://shottr.cc/). It is installed with all programs using homebrew here. Check out its [Tips & Tricks](https://shottr.cc/#section-tips/). They are really helpful.
 
 * Q: I use an <ins>external audiocard</ins> and I want to control its <ins>volume in a standard way</ins> and use an equalizer depending on the device
 * A: I use [eqmac](https://eqmac.app/). It is installed with all programs using homebrew here.
 
 * Q: I use Spotlight, but it's not as powerful as I want. I want to calculate numbers, use AI, search Google
-* A: I use [raycast](https://www.raycast.com/). It is installed with all programs using homebrew here.
-
-* Q: I have an Android phone. How do I send a file to my macOS?
-* A: You can use your Telegram Saved Messages, but I also use [NearDrop Plus](https://github.com/XRayAdamo/NearDrop) to receive files as AirDrop. It can also open links automatically so your guests can easily open their links.
+* A: I use [raycast](https://www.raycast.com/). It is installed with all programs using homebrew here. Check out its extenions
 
 * Q: I want to <ins>download a video</ins> from <ins>YouTube</ins> or <ins>RuTube</ins>:
 * A: I use [yt-dlp](https://github.com/yt-dlp/yt-dlp). Just use the **yt-dlp** command with any link. For example:
@@ -61,9 +58,19 @@ OBSOLETED IMAGE!!! CHECK THE FILE `hammerspoon/Spoons/Hotkeys.spoon/init.lua`
 yt-dlp https://www.youtube.com/watch?v=QhROKjpuLMM
 yt-dlp https://www.youtube.com/user/ButKorn/videos
 ```
+* Q: I want to <ins>download a mp3</ins> from <ins>YouTube</ins> or <ins>RuTube</ins>:
+* A: Same yt-dlp usage. Try my aliases in zsh to do so.
 
-* Q: I want to <ins>hide comments</ins> and <ins>speed up videos</ins> on <ins>YouTube</ins>:
-* A: I use [YouTube Enhancer](https://addons.mozilla.org/en-US/firefox/addon/enhancer-for-youtube/). Import my settings from [here](https://github.com/servitola/dotfiles/tree/master/youtube-enhancer)
+Audio as .mp3:
+```
+yta https://www.youtube.com/watch?v=i6JjquwFNU4
+```
+Video as .mp4:
+```
+ytv https://www.youtube.com/watch?v=8ApNlMcNEY0
+```
+* Q: I want to <ins>hide comments</ins> and <ins>speed up videos</ins> on <ins>YouTube</ins>. And also 1000 of options. You're surely find yours:
+* A: I use [Improve YouTube](https://chromewebstore.google.com/detail/improve-youtube-%F0%9F%8E%A7-for-yo/bnomihfieiccainjcjblhegjgglakjdd). Install it and import my settings from [here](https://github.com/servitola/dotfiles/tree/master/chromium-ImprovedTube-extension)
 
 * Q: I want to have multiple buffers and not switch between windows multiple times. I want to <ins>copy</ins> and <ins>paste</ins> <ins>multiple</ins> things at once.
 * A: I use [maccy](https://maccy.app/). It is installed with all programs using homebrew here.

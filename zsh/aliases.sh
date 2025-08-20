@@ -1,16 +1,39 @@
-# ZSH
+# update all
 alias up='zsh ~/projects/dotfiles/macos/update_all_and_cleanup_all.sh'
 alias u=up
+
+alias a="claude -c"
+
+# reload zsh settings
 alias reload="exec zsh"
+alias re=reload
+
+# yarn
+alias y=yarn
+alias yi="yarn install"
+alias yb="yarn build"
+alias yd="yarn dev"
+alias yl="yarn lint"
+alias yc="yarn check-all"
+alias ya="yi && yb && yc"
+
+# download from YouTube
+alias ytvideo="yt-dlp --config-location ~/projects/dotfiles/yt-dlp/videoConfig"
+alias ytv=ytvideo
+alias ytaudio="yt-dlp --config-location ~/projects/dotfiles/yt-dlp/audioConfig"
+alias yta=ytaudio
 
 alias c=clear
-alias ping=gping
+
+# duckduckgo search
+alias d="ddgr -x -n 3"
+
 alias gtop=btop
-alias code=windsurf
+alias code2=windsurf
 alias cpwd="pwd|tr -d '\n'|pbcopy"
-alias re=reload
+
+alias rm="rm -f"
 alias cat=bat
-#alias rm=trash
 alias mkdir="mkdir -pv"
 alias grep='grep --color=auto'
 alias search=grep
@@ -23,6 +46,7 @@ alias f=fzf
 alias htop=btop
 alias t=btop
 alias b=btop
+
 # -i \"2:2\"
 alias rec="ffmpeg -f avfoundation -framerate 30 -video_size 1920x1080 -pixel_format uyvy422  -f avfoundation -i \"2\" -preset ultrafast -c:a pcm_s16le -probesize 100M \"output_$(date +%Y%m%d_%H%M%S).mp4\""
 
@@ -60,10 +84,7 @@ source ~/projects/dotfiles/eza/colors.sh
 
 # eza aliases with custom theme
 alias ls="eza --icons --group-directories-first --color=always"
-alias l="ls"
+alias l="eza --icons --group-directories-first --color=always"
 alias ll="ls -l"
 alias la="ll -a"
 alias lt="ll --tree"
-
-# EZA aliases                                                       # ls
-alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"

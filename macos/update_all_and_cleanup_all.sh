@@ -18,18 +18,18 @@ print_task() {
     printf "${GREEN}${BOLD}⚡${NC} ${BOLD}%s${NC}\n" "$1"
 }
 
-print_section "System Updates"
+print_section "Apps Updates"
 
-print_task "Updating Homebrew"
 rm -rf "brew --cache" >/dev/null 2>&1
 brew tap --repair
 brew cu --all --yes --quiet --no-quarantine
 brew update
 brew upgrade
+mas list
 mas upgrade
 brew cleanup
 brew doctor
-brew bundle dump --force --file=~/projects/dotfiles/homebrew/.brewfile
+brew bundle dump --force --file=~/projects/dotfiles/homebrew/brewfile
 
 print_task "Updating .NET tools"
 dotnet tool update -g dotnet-trace
@@ -70,18 +70,21 @@ tldr --update >/dev/null || echo "Error updating tldr cache"
 
 print_task "Checking Android SDK"
 
-sdkmanager --licenses --quiet 2>&1 | grep -v "Warning: " >/dev/null || {
+sdkmanager --licenses 2>&1 | grep -v "Warning: " >/dev/null || {
     error_code=$?
     if [ $error_code -ne 0 ] && [ $error_code -ne 141 ]; then
         echo "Error verifying Android SDK licenses"
     fi
 }
 
-reload
+print_task "Updating Powerlevel10k theme"
+git -C ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k pull
+
+print_task "Updating Gruvbox wallpapers"
+~/projects/dotfiles/macos/sync_gruvbox_wallpapers.sh
 
 print_task "Updating Oh My Zsh"
 zsh -ic "omz update"
-git -C ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k pull
 
 purge
 
