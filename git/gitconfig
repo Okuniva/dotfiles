@@ -2,11 +2,18 @@
 	name = Okuniva
 	email = AlexHeal@protonmail.com
 
+[color]
+	ui = auto
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
+
 [branch]
 	sort = -committerdate
 
 [core]
-	editor = windsurf -w
+	editor = code -w
 
 [credential]
   helper = osxkeychain

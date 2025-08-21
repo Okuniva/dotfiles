@@ -1,0 +1,30 @@
+{
+  "cleanupPeriodDays": 60,
+  "env": {
+    "CLAUDE_CODE_ENABLE_TELEMETRY": "0",
+    "DISABLE_ERROR_REPORTING": "1",
+    "DISABLE_TELEMETRY": "1",
+    "BASH_MAX_TIMEOUT_MS": "480000"
+  },
+  "permissions": {
+    "allow": [
+      "Bash",
+      "Edit",
+      "Fetch",
+      "Glob",
+      "Grep",
+      "LS",
+      "MultiEdit",
+      "Read",
+      "Task",
+      "TodoWrite",
+      "WebFetch",
+      "WebSearch",
+      "Write"
+    ],
+    "deny": []
+  },
+  "feedbackSurveyState": {
+    "lastShownTime": 1753972121027
+  }
+}

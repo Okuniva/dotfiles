@@ -12,10 +12,6 @@ install:
 	@$(SHELL) -c 'source homebrew/install_minimum_homebrew_packages.sh'
 	@$(SHELL) -c 'source zsh/setup_zsh.sh'
 
-	@echo "setup hosts file (perhaps you need to do it manually later)"
-	@sudo rm -rf /etc/hosts
-	@sudo ln -sfvh ~/projects/dotfiles/macos/hosts /etc/hosts
-
 	@echo "setup git symlinks"
 	@rm -rf ~/.gitconfig
 	@ln -sfvh ~/projects/dotfiles/git/gitconfig ~/.gitconfig
@@ -42,25 +38,43 @@ install:
 	@ln -sfvh ~/projects/dotfiles/midnight\ commander ~/.config/mc
 
 	@echo "setup Windsurf user settings symlinks"
-	@mkdir -p ~/Library/Application\ Support/Windsurf/User
-	@rm -f ~/Library/Application\ Support/Windsurf/User/settings.json
-	@ln -sfvh ~/projects/dotfiles/windsurf/User/settings.json ~/Library/Application\ Support/Windsurf/User/settings.json
-	@rm -f ~/Library/Application\ Support/Windsurf/User/keybindings.json
-	@ln -sfvh ~/projects/dotfiles/windsurf/User/keybindings.json ~/Library/Application\ Support/Windsurf/User/keybindings.json
-	@rm -f ~/.codeium/windsurf/memories/global_rules.md
-	@ln -sfvh ~/projects/dotfiles/windsurf/global_rules.md ~/.codeium/windsurf/memories/global_rules.md
+	@mkdir -p ~/Library/Application\ Support/Windsurf\ -\ Next/User
 
-	@echo "setup Rider vmoptions symlink"
-	@rm -rf ~/Library/Application\ Support/JetBrains/Rider2024.3/rider.vmoptions
-	@ln -sfvh ~/projects/dotfiles/jetbrains\ rider/rider.vmoptions ~/Library/Application\ Support/JetBrains/Rider2024.3/rider.vmoptions
+	@rm -f ~/Library/Application\ Support/Windsurf\ -\ Next/User/settings.json
+	@ln -sfvh ~/projects/dotfiles/windsurf/User/settings.json ~/Library/Application\ Support/Windsurf\ -\ Next/User/settings.json
 
-	@echo "setup Rider keymaps symlink"
-	@mkdir -p ~/Library/Application\ Support/JetBrains/Rider2024.3/keymaps
-	@ln -sfvh ~/projects/dotfiles/jetbrains\ rider/keymaps/IntelliJ\ copy.xml ~/Library/Application\ Support/JetBrains/Rider2024.3/keymaps/IntelliJ\ copy.xml
+	@rm -f ~/Library/Application\ Support/Windsurf\ -\ Next/User/keybindings.json
+	@ln -sfvh ~/projects/dotfiles/windsurf/User/keybindings.json ~/Library/Application\ Support/Windsurf\ -\ Next/User/keybindings.json
 
-	@echo "setup LINQPad symlinks"
-	@rm -rf ~/LINQPad
-	@ln -sfvh ~/projects/dotfiles/LINQPad ~/LINQPad
+	@rm -f ~/.codeium/windsurf-next/memories/global_rules.md
+	@ln -sfvh ~/projects/dotfiles/windsurf/global_rules.md ~/.codeium/windsurf-next/memories/global_rules.md
+
+	@echo "setup VSCode user settings symlinks"
+	@mkdir -p ~/Library/Application\ Support/Code/User
+	@rm -f ~/Library/Application\ Support/Code/User/settings.json
+	@ln -sfvh ~/projects/dotfiles/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
+	@rm -f ~/Library/Application\ Support/Code/User/keybindings.json
+	@ln -sfvh ~/projects/dotfiles/vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
+
+	@echo "setup yt-dlp"
+	@mkdir -p ~/.config/yt-dlp
+	@rm -f ~/.config/yt-dlp/config
+	@ln -sfvh ~/projects/dotfiles/yt-dlp/config ~/.config/yt-dlp/config
+
+	@echo "setup iina shortcuts"
+	@mkdir -p ~/Library/Application\ Support/com.colliderli.iina/input_conf
+	@rm -f ~/Library/Application\ Support/com.colliderli.iina/input_conf/servitola.conf
+	@ln -sfvh ~/projects/dotfiles/iina/servitola.conf ~/Library/Application\ Support/com.colliderli.iina/input_conf/servitola.conf
+
+	@echo "Setting up Rider vmoptions symlink for all Rider installations"
+	@sh -c '\
+	for dir in "~/Library/Application Support/JetBrains"/Rider*; do \
+		if [ -d "$$dir" ]; then \
+			echo "Updating: $$dir/rider.vmoptions"; \
+			rm -rf "$$dir/rider.vmoptions"; \
+			ln -sfvh "~/projects/dotfiles/jetbrains rider/rider.vmoptions" "$$dir/rider.vmoptions"; \
+		fi; \
+	done'
 
 	@echo "setup Appium symlinks"
 	@rm -rf ~/.appium
@@ -83,14 +97,29 @@ install:
 	@rm -rf ~/Library/Application\ Support/aichat/config.yaml
 	@ln -sfvh ~/projects/dotfiles/Library/Application\ Support/aichat/config.yaml ~/Library/Application\ Support/aichat/config.yaml
 
+	@echo "setup Claude Desktop config symlink"
+	@mkdir -p ~/Library/Application\ Support/Claude
+	@rm -rf ~/Library/Application\ Support/Claude/claude_desktop_config.json
+	@ln -sfvh ~/projects/dotfiles/claude-desktop/claude_desktop_config.json ~/Library/Application\ Support/Claude/claude_desktop_config.json
+
+	@echo "setup Claude Code settings symlink"
+	@mkdir -p ~/.claude
+	@rm -rf ~/.claude/settings.json
+	@ln -sfvh ~/projects/dotfiles/claude-code/settings.json ~/.claude/settings.json
+
 	@echo "setup yazi symlinks"
 	@rm -rf ~/.config/yazi
 	@ln -sfvh ~/projects/dotfiles/yazi/.config/yazi ~/.config/yazi
 
 	@echo "setup alt-tab symlinks"
 	@mkdir -p ~/Library/Preferences
-	@rm -f ~/Library/Preferences/com.lwouis.alt-tab-macos.plist
+	@rm -rf ~/Library/Preferences/com.lwouis.alt-tab-macos.plist
 	@ln -sfvh ~/projects/dotfiles/alt-tab/Library/Preferences/com.lwouis.alt-tab-macos.plist ~/Library/Preferences/com.lwouis.alt-tab-macos.plist
+
+	@echo "setup Fork custom commands symlink"
+	@mkdir -p ~/Library/Application\ Support/com.DanPristupov.Fork
+	@rm -rf ~/Library/Application\ Support/com.DanPristupov.Fork/custom-commands.json
+	@ln -sfvh ~/projects/dotfiles/fork/custom-commands.json ~/Library/Application\ Support/com.DanPristupov.Fork/custom-commands.json
 
 	@echo "setup bin directory"
 	@mkdir -p ~/.local/bin
@@ -106,23 +135,27 @@ install:
 	@echo "installing trash-cli to replace rm with trash"
 	@npm install --global trash-cli
 
+	@echo "installing Claude Code CLI"
+	@npm install -g @anthropic-ai/claude-code
+
+	@echo "installing Appium Server for testing"
+	@npm install -g appium
+
 	@echo "installing vsce to publish vscode extensions"
 	@npm install --global vsce
 	@npm install --global typescript
 
-	@echo "installing Finder Context Menu"
-	@rm -rf ~/Library/Group\ Containers/85P8ZUTQL8.net.langui.ContextMenu/Actions
-	@ln -sfvh ~/projects/dotfiles/contextmenu/Actions ~/Library/Group\ Containers/85P8ZUTQL8.net.langui.ContextMenu/Actions
-	@mkdir -p ~/Library/Application\ Scripts/net.langui.ContextMenuHelper
-	@echo '#!/bin/sh\npkill -nf ScriptMonitor\nexec "$$@"' > ~/Library/Application\ Scripts/net.langui.ContextMenuHelper/contextmenu.sh
-	@chmod +x ~/Library/Application\ Scripts/net.langui.ContextMenuHelper/contextmenu.sh
+	@echo "Installing Context Menu settings..."
+	@rm -rf ~/Library/Group\ Containers/85P8ZUTQL8.net.langui.ContextMenu
+	@rm -rf ~/Library/Application\ Scripts/net.langui.ContextMenu*
+	@ln -sf ~/projects/dotfiles/contextmenu/85P8ZUTQL8.net.langui.ContextMenu ~/Library/Group\ Containers/
+	@find ~/projects/dotfiles/contextmenu -name "net.langui.ContextMenu*" -exec ln -sf {} ~/Library/Application\ Scripts/ \;
 
-	@if [ ! -d "$(HOME)/projects/gruvbox-wallpapers" ]; then \
-		echo "Cloning gruvbox-wallpapers repository..."; \
-		git clone https://github.com/AngelJumbo/gruvbox-wallpapers.git $(HOME)/projects/gruvbox-wallpapers; \
-	else \
-		echo "gruvbox-wallpapers repository already cloned."; \
-		cd $(HOME)/projects/gruvbox-wallpapers && git pull; \
-	fi
+	@echo "Syncing gruvbox-wallpapers"
+	@~/projects/dotfiles/macos/sync_gruvbox_wallpapers.sh
+
+	@m appearance highlightcolor grape
+
+	@$(SHELL) -c 'source ableton/setup-mcp.sh'
 
 	@echo "Installation complete!"
