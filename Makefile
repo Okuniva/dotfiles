@@ -3,6 +3,19 @@
 SHELL := /bin/zsh
 
 install:
+	@echo "Checking if ~/projects/dotfiles exists..."
+	@if [ ! -d ~/projects/dotfiles ]; then \
+		echo "Warning: dotfiles not found in default location ~/projects/dotfiles"; \
+		echo "Current dotfiles location: $(PWD)"; \
+		echo -n "Are you sure you want to install from this non-default path? (y/N): "; \
+		read answer; \
+		if [ "$$answer" != "y" ] && [ "$$answer" != "Y" ]; then \
+			echo "Installation cancelled. Please move dotfiles to ~/projects/dotfiles or confirm installation."; \
+			exit 1; \
+		fi; \
+	else \
+		echo "~/projects/dotfiles already exists"; \
+	fi
 
 	@$(SHELL) -c 'source zsh/functions.sh'
 	@$(SHELL) -c 'source zsh/exports.sh'
@@ -134,5 +147,8 @@ install:
 	@m appearance highlightcolor grape
 
 	@$(SHELL) -c 'source ableton/setup-mcp.sh'
+
+	@echo "Opening Karabiner-Elements..."
+	@open -a "Karabiner-Elements"
 
 	@echo "Installation complete!"
