@@ -29,25 +29,9 @@ install:
 	@ln -sfvh ~/projects/dotfiles/hammerspoon ~/.hammerspoon
 	@open /Applications/Hammerspoon.app
 
-	@echo "setup AyuGram advanced settings"
-	@mkdir -p ~/projects/dotfiles/ayugram
-	@$(SHELL) -c 'source ~/projects/dotfiles/ayugram/configure.sh'
-
 	@echo "setup midnight commander symlink"
 	@rm -rf ~/.config/mc
 	@ln -sfvh ~/projects/dotfiles/midnight\ commander ~/.config/mc
-
-	@echo "setup Windsurf user settings symlinks"
-	@mkdir -p ~/Library/Application\ Support/Windsurf\ -\ Next/User
-
-	@rm -f ~/Library/Application\ Support/Windsurf\ -\ Next/User/settings.json
-	@ln -sfvh ~/projects/dotfiles/windsurf/User/settings.json ~/Library/Application\ Support/Windsurf\ -\ Next/User/settings.json
-
-	@rm -f ~/Library/Application\ Support/Windsurf\ -\ Next/User/keybindings.json
-	@ln -sfvh ~/projects/dotfiles/windsurf/User/keybindings.json ~/Library/Application\ Support/Windsurf\ -\ Next/User/keybindings.json
-
-	@rm -f ~/.codeium/windsurf-next/memories/global_rules.md
-	@ln -sfvh ~/projects/dotfiles/windsurf/global_rules.md ~/.codeium/windsurf-next/memories/global_rules.md
 
 	@echo "setup VSCode user settings symlinks"
 	@mkdir -p ~/Library/Application\ Support/Code/User
@@ -65,16 +49,6 @@ install:
 	@mkdir -p ~/Library/Application\ Support/com.colliderli.iina/input_conf
 	@rm -f ~/Library/Application\ Support/com.colliderli.iina/input_conf/servitola.conf
 	@ln -sfvh ~/projects/dotfiles/iina/servitola.conf ~/Library/Application\ Support/com.colliderli.iina/input_conf/servitola.conf
-
-	@echo "Setting up Rider vmoptions symlink for all Rider installations"
-	@sh -c '\
-	for dir in "~/Library/Application Support/JetBrains"/Rider*; do \
-		if [ -d "$$dir" ]; then \
-			echo "Updating: $$dir/rider.vmoptions"; \
-			rm -rf "$$dir/rider.vmoptions"; \
-			ln -sfvh "~/projects/dotfiles/jetbrains rider/rider.vmoptions" "$$dir/rider.vmoptions"; \
-		fi; \
-	done'
 
 	@echo "setup Appium symlinks"
 	@rm -rf ~/.appium
@@ -141,15 +115,18 @@ install:
 	@echo "installing Appium Server for testing"
 	@npm install -g appium
 
+	@echo "installing Appium drivers"
+	@$(SHELL) -c 'source appium/install_drivers.sh'
+
 	@echo "installing vsce to publish vscode extensions"
 	@npm install --global vsce
 	@npm install --global typescript
 
 	@echo "Installing Context Menu settings..."
 	@rm -rf ~/Library/Group\ Containers/85P8ZUTQL8.net.langui.ContextMenu
-	@rm -rf ~/Library/Application\ Scripts/net.langui.ContextMenu*
+	@rm -rf ~/Library/Application\ Scripts/net.langui.ContextMenu* || true
 	@ln -sf ~/projects/dotfiles/contextmenu/85P8ZUTQL8.net.langui.ContextMenu ~/Library/Group\ Containers/
-	@find ~/projects/dotfiles/contextmenu -name "net.langui.ContextMenu*" -exec ln -sf {} ~/Library/Application\ Scripts/ \;
+	@find ~/projects/dotfiles/contextmenu -name "net.langui.ContextMenu*" -exec ln -sf {} ~/Library/Application\ Scripts/ \; || true
 
 	@echo "Syncing gruvbox-wallpapers"
 	@~/projects/dotfiles/macos/sync_gruvbox_wallpapers.sh
