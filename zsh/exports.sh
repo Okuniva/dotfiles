@@ -56,3 +56,6 @@ export PATH="$PATH:$NODE_PATH"
 export PATH="$PATH:$NPM_PACKAGES/bin"
 export PATH="$PATH:$NPM_PACKAGES"
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
+
+# Appium
+export APPIUM_HOME="~/projects/dotfiles/appium/.appium"
