@@ -365,9 +365,9 @@ layers_list =
 -- q: pageUp
 -- w: up
 -- e: pagedown
-{ key="r", app="Rider" },
+{ key="r", app="IntelliJ IDEA" },
 { key="t", app="Telegram", window_default_position="right" },
-{ key="y", specific_function="show_youtrack" },
+{ key="y", app="Slack" },
 { key="u", app="Transmission", window_default_position="right" },
 { key="i", app="Claude", window_default_position="right" },
 -- o: up
@@ -379,7 +379,7 @@ layers_list =
 -- d: right
 { key="f", app="Finder" },
 { key="g", app="Fork" },
-{ key="h", app="Safari" },
+{ key="h", app="Charles" },
 { key="j", specific_function="show_youtrack_tasks" },
 -- k: left
 -- l: down
@@ -390,7 +390,7 @@ layers_list =
 { key="z", specific_function="press_return" },
 -- x: home
 -- c: end
-{ key="v", app="Yandex" },
+{ key="v", app="Google Chrome" },
 { key="b", app="iTerm" },
 { key="n", app="Visual Studio Code" },
 { key="m", app="Iina", window_default_position="bottom"},
