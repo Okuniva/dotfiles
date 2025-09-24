@@ -1,1 +1,43 @@
-[]
+[
+    // GitHub Copilot keybindings
+    // Override default cmd+e (Quick Open) for Copilot
+    {
+        "key": "cmd+e",
+        "command": "-workbench.action.quickOpen"
+    },
+    {
+        "key": "cmd+e",
+        "command": "workbench.action.chat.open",
+        "when": "github.copilot.activated"
+    },
+    {
+        "key": "ctrl+shift+enter",
+        "command": "inlineChat.start",
+        "when": "editorTextFocus && !editorReadonly && github.copilot.activated"
+    },
+    {
+        "key": "cmd+shift+i",
+        "command": "workbench.panel.chat.view.copilot.focus",
+        "when": "github.copilot.activated"
+    },
+    {
+        "key": "alt+\\",
+        "command": "editor.action.inlineSuggest.trigger",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "alt+]",
+        "command": "editor.action.inlineSuggest.showNext",
+        "when": "inlineSuggestionVisible && !editorReadonly"
+    },
+    {
+        "key": "alt+[",
+        "command": "editor.action.inlineSuggest.showPrevious",
+        "when": "inlineSuggestionVisible && !editorReadonly"
+    },
+    {
+        "key": "ctrl+enter",
+        "command": "editor.action.inlineSuggest.commit",
+        "when": "inlineSuggestionVisible && !editorReadonly"
+    }
+]

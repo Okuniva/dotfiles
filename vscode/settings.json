@@ -19,8 +19,19 @@
         "*": true,
         "plaintext": true,
         "markdown": true,
-        "scminput": false
+        "scminput": true
     },
+    "github.copilot.editor.enableAutoCompletions": true,
+    "github.copilot.editor.enableCodeActions": true,
+    "github.copilot.chat.enable": true,
+    "github.copilot.chat.welcomeMessage": "default",
+    "github.copilot.chat.localeOverride": "auto",
+    "github.copilot.chat.followUpQuestions": "on",
+    "github.copilot.advanced": {
+        "authProvider": "github",
+        "inlineSuggestEnable": true
+    },
+    "security.workspace.trust.enabled": false,
     "dotnet-test-explorer.testProjectPath": "**/*Tests.@(csproj|vbproj|fsproj)",
     "dotnet-test-explorer.autoWatch": true,
     "dotnet-test-explorer.testArguments": "/p:CollectCoverage=true",

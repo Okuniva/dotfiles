@@ -391,8 +391,8 @@ layers_list =
 -- x: home
 -- c: end
 { key="v", app="Google Chrome" },
-{ key="b", app="iTerm" },
-{ key="n", app="Visual Studio Code" },
+{ key="b", app="Visual Studio Code" },
+{ key="n", app="iTerm" },
 { key="m", app="Iina", window_default_position="bottom"},
 -- ,: home
 -- .: end
