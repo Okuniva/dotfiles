@@ -99,3 +99,6 @@
     dkal = difftool -y -t Kaleidoscope
     mkal = mergetool -y -t Kaleidoscope
     remotes = remote -v
+    
+    # User management
+    user = !~/projects/dotfiles/git/git-user

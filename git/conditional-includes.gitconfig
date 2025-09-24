@@ -1,0 +1,16 @@
+# Directory-based Git User Configuration
+# 
+# This file contains conditional includes that automatically
+# apply different user configurations based on the directory
+# you're working in.
+
+# Work projects (inDriver)
+[includeIf "gitdir:~/projects/indriver*/"]
+    path = ~/projects/dotfiles/git/users/work.gitconfig
+
+[includeIf "gitdir:~/projects/inDriver*/"]
+    path = ~/projects/dotfiles/git/users/work.gitconfig
+
+# You can add more patterns here for other work directories
+# [includeIf "gitdir:~/projects/company-name/"]
+#     path = ~/projects/dotfiles/git/users/work.gitconfig

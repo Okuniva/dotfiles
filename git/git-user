@@ -1,0 +1,99 @@
+#!/bin/bash
+
+# Git User Switcher
+# Usage: git-user [personal|work|list]
+
+DOTFILES_DIR="$HOME/projects/dotfiles/git/users"
+CURRENT_USER_FILE="$HOME/.git-current-user"
+
+show_usage() {
+    echo "Usage: git-user [personal|work|list|current]"
+    echo ""
+    echo "Commands:"
+    echo "  personal  - Switch to personal GitHub account"
+    echo "  work      - Switch to work GitHub account" 
+    echo "  list      - List available user configurations"
+    echo "  current   - Show current user configuration"
+    echo ""
+}
+
+list_users() {
+    echo "Available user configurations:"
+    for config in "$DOTFILES_DIR"/*.gitconfig; do
+        if [[ -f "$config" ]]; then
+            basename=$(basename "$config" .gitconfig)
+            name=$(git config --file "$config" --get user.name)
+            email=$(git config --file "$config" --get user.email)
+            echo "  $basename: $name <$email>"
+        fi
+    done
+}
+
+show_current() {
+    current_name=$(git config --global --get user.name)
+    current_email=$(git config --global --get user.email)
+    echo "Current user: $current_name <$current_email>"
+    
+    if [[ -f "$CURRENT_USER_FILE" ]]; then
+        current_profile=$(cat "$CURRENT_USER_FILE")
+        echo "Profile: $current_profile"
+    fi
+}
+
+switch_user() {
+    local profile="$1"
+    local config_file="$DOTFILES_DIR/$profile.gitconfig"
+    
+    if [[ ! -f "$config_file" ]]; then
+        echo "Error: User configuration '$profile' not found!"
+        echo "Available configurations:"
+        list_users
+        exit 1
+    fi
+    
+    # Get user info from the config file
+    name=$(git config --file "$config_file" --get user.name)
+    email=$(git config --file "$config_file" --get user.email)
+    github_user=$(git config --file "$config_file" --get github.user)
+    
+    # Set global git config
+    git config --global user.name "$name"
+    git config --global user.email "$email"
+    
+    if [[ -n "$github_user" ]]; then
+        git config --global github.user "$github_user"
+    fi
+    
+    # Save current profile
+    echo "$profile" > "$CURRENT_USER_FILE"
+    
+    echo "✅ Switched to $profile user:"
+    echo "   Name: $name"
+    echo "   Email: $email"
+    if [[ -n "$github_user" ]]; then
+        echo "   GitHub: $github_user"
+    fi
+}
+
+# Main logic
+case "${1:-}" in
+    "personal"|"work")
+        switch_user "$1"
+        ;;
+    "list")
+        list_users
+        ;;
+    "current")
+        show_current
+        ;;
+    "")
+        show_current
+        echo ""
+        show_usage
+        ;;
+    *)
+        echo "Error: Unknown command '$1'"
+        show_usage
+        exit 1
+        ;;
+esac

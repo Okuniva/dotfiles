@@ -42,11 +42,9 @@
     "window.zoomLevel": 2,
     "cline.chromeExecutablePath": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
     "roo-cline.allowedCommands": [
-        "npm test",
-        "npm install",
-        "tsc",
-        "git log",
-        "git diff",
-        "git show"
-    ]
+        "*"
+    ],
+    "terminal.integrated.allowWorkspaceShell": true,
+    "extensions.autoCheckUpdates": true,
+    "extensions.autoUpdate": true
 }

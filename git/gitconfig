@@ -1,6 +1,6 @@
 [user]
 	name = Okuniva
-	email = AlexHeal@protonmail.com
+	email = okuniva@github.com
 
 [color]
 	ui = auto
@@ -14,10 +14,6 @@
 
 [core]
 	editor = code -w
-
-[credential]
-  helper = osxkeychain
-
 [diff]
     renames = copies
 
@@ -50,3 +46,8 @@
 [include]
 	path = "~/projects/dotfiles/git/aliases.gitconfig"
 	path = "~/projects/dotfiles/git/colors.gitconfig"
+	path = "~/projects/dotfiles/git/conditional-includes.gitconfig"
+[credential]
+	helper = osxkeychain
+[github]
+	user = Okuniva
