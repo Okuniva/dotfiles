@@ -93,7 +93,6 @@
     },
     "files.exclude": {
         "_ReSharper.Caches": true,
-        ".appium": true,
         ".cache": true,
         ".gitconfig": true,
         ".hammerspoon": true,

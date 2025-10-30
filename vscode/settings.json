@@ -27,6 +27,10 @@
     "github.copilot.chat.welcomeMessage": "default",
     "github.copilot.chat.localeOverride": "auto",
     "github.copilot.chat.followUpQuestions": "on",
+    "github.copilot.chat.edits.autoApply": "always",
+    "chat.editing.confirmEditRequestRemoval": false,
+    "chat.editing.confirmEditRequestRetry": false,
+    "chat.editing.alwaysShowToolUse": false,
     "github.copilot.advanced": {
         "authProvider": "github",
         "inlineSuggestEnable": true
@@ -46,5 +50,6 @@
     ],
     "terminal.integrated.allowWorkspaceShell": true,
     "extensions.autoCheckUpdates": true,
-    "extensions.autoUpdate": true
+    "extensions.autoUpdate": true,
+    "explorer.confirmDelete": false
 }

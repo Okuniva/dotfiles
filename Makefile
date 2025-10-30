@@ -63,10 +63,6 @@ install:
 	@rm -f ~/Library/Application\ Support/com.colliderli.iina/input_conf/servitola.conf
 	@ln -sfvh ~/projects/dotfiles/iina/servitola.conf ~/Library/Application\ Support/com.colliderli.iina/input_conf/servitola.conf
 
-	@echo "setup Appium symlinks"
-	@rm -rf ~/.appium
-	@ln -sfvh ~/projects/dotfiles/appium/.appium ~/.appium
-
 	@echo "setup btop symlinks"
 	@rm -rf ~/.config/btop
 	@ln -sfvh ~/projects/dotfiles/btop ~/.config/btop
@@ -124,12 +120,6 @@ install:
 
 	@echo "installing Claude Code CLI"
 	@npm install -g @anthropic-ai/claude-code
-
-	@echo "installing Appium Server for testing"
-	@npm install -g appium
-
-	@echo "installing Appium drivers"
-	@$(SHELL) -c 'source appium/install_drivers.sh'
 
 	@echo "installing vsce to publish vscode extensions"
 	@npm install --global vsce
