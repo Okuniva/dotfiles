@@ -39,7 +39,7 @@ hyper = { "right_command", "right_control", "right_option", "right_shift" }
 -- ℝ -- Rider IDE
 -- 📁 -- Finder
 -- 🔄 -- Git
--- 📝 -- VSCode
+-- 📝 -- Cursor
 
 -- ⚠️ —— HARD TO PRESS, don't use
 
@@ -343,7 +343,7 @@ layers_list =
 -- ├———————┴┬————┴┬————┴┬————┴┬————┴┬———————┴┬———————┴┬-—-———┴┬————┴┬————┴┬————┴┬————┴┬————┴╮     │
 -- │ 🟢🟢🟢  │  ←  │  ↓  │  →  │  📁  │Fork🔄  │ Safari │YTTasks│  ←  │  ↓  │  →  │ 🔊  │     │     │
 -- ├————————┴┬————┴┬————┴┬————┴┬————┴┬———————┴┬———————┴┬——————┴┬————┴┬————┴┬————┴┬————┴—————┴—————┤
--- │         │  ↩  │home │ end │ 🌐  │ iTerm2 │ VSCode │ IINA  │home │ end │ 🔉   │                │
+-- │         │  ↩  │home │ end │ 🌐  │ iTerm2 │ Cursor │ IINA  │home │ end │ 🔉   │                │
 -- ├————————┬┴————┬┴—————┼—————┴—————┴————————┴————————┴———————┼—————┴┬————┴————┬┴————————————————╯
 -- │        │     │      │           play/stop                 │      │         │
 -- ╰————————┴—————┴——————┴—————————————————————————————————————┴——————┴—————————╯
@@ -391,7 +391,7 @@ layers_list =
 -- x: home
 -- c: end
 { key="v", app="Google Chrome" },
-{ key="b", app="Visual Studio Code" },
+{ key="b", app="Cursor" },
 { key="n", app="iTerm" },
 { key="m", app="Iina", window_default_position="bottom"},
 -- ,: home
@@ -452,7 +452,7 @@ layers_list =
 -- ╭—————╮__CMD_ALT_LAYER___╭—————┬—————┬—————┬—————┬—————┬—————┬—————┬—————┬—————┬————————╮
 -- │    │Fork  │Fork │Fork │     │    │     │     │     │     │     │     │     │        │
 -- ├—————┴—┬————┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬——————┤
--- │       │VSCode│     │     │     │  ℝ  │     │     │     │     │     │     │     │      │
+-- │       │Cursor│     │     │     │  ℝ  │     │     │     │     │     │     │     │      │
 -- ├———————┴┬—————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴╮     │
 -- │        │      │     │    │  ℝ  │     │    │     │     │     │     │     │     │     │
 -- ├————————┴┬—————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴—————┴—————┤
@@ -465,7 +465,7 @@ layers_list =
 -- 1: Fork — Show commit details
 -- 2: Fork — Show commit changes
 -- 3: Fork — Show commit filetree
-{ key="q", app="Visual Studio Code" },
+{ key="q", app="Cursor" },
 -- r: ℝ - resume running
 -- u: Music — Show playing next queue
 -- i: 🌐 — Developer Tools
